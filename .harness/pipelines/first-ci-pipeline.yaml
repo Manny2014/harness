@@ -31,3 +31,29 @@ pipeline:
             spec: {}
             type: Cloud
         type: CI
+    - stage:
+        name: build-complete
+        identifier: buildcomplete
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: print-results
+                  identifier: printresults
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |
+                          echo "$(ls -la)"
+                          echo "$(whoami)"
+                          echo "build complete"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
