@@ -67,7 +67,8 @@ pipeline:
                             cpu: "0.5"
                             memory: 500Mi
                         annotations: {}
-                        labels: {}
+                        labels:
+                          app_id: "0000"
                         containerSecurityContext:
                           capabilities:
                             drop: []
@@ -79,4 +80,10 @@ pipeline:
                     envVariables: {}
                     imagePullPolicy: IfNotPresent
                   timeout: 1m
+                  failureStrategies:
+                    - onFailure:
+                        errors:
+                          - AllErrors
+                        action:
+                          type: MarkAsFailure
         tags: {}
