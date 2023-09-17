@@ -1,6 +1,6 @@
 environment:
-  name: ut
-  identifier: ut
+  name: utusc1
+  identifier: utusc1
   orgIdentifier: default
   projectIdentifier: default_project
   description: ""

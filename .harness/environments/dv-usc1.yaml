@@ -1,0 +1,8 @@
+environment:
+  name: dvusc1
+  identifier: dvusc1
+  orgIdentifier: default
+  projectIdentifier: default_project
+  description: ""
+  tags: {}
+  type: PreProduction
