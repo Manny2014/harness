@@ -27,6 +27,7 @@ pipeline:
                               echo "hello world"
                               echo "$(ls -la)"
                               echo "$(whoami)"
+                              echo "$(pwd)"
                         environmentVariables: []
                         outputVariables: []
                       timeout: 10m
