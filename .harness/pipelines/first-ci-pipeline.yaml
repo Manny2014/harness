@@ -62,7 +62,7 @@ pipeline:
                       type: KubernetesDirect
                       spec:
                         connectorRef: gkecluster1
-                        namespace: default
+                        namespace: harness-delegate-ng
                         resources:
                           limits:
                             cpu: "0.5"
