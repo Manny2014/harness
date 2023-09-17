@@ -42,7 +42,10 @@ pipeline:
                           type: Inline
                           spec:
                             script: echo "test" > test.txt
-                        environmentVariables: []
+                        environmentVariables:
+                        - name: EXAMPLE_VAR
+                          type: string
+                          value: hello-env-var
                         outputVariables: []
                       timeout: 10m
               - step:
