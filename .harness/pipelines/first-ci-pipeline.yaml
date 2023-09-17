@@ -43,9 +43,6 @@ pipeline:
                           spec:
                             script: echo "test" > test.txt
                         environmentVariables: []
-                        # - name: EXAMPLE_VAR
-                        #   type: string
-                        #   value: hello-env-var
                         outputVariables: []
                       timeout: 10m
               - step:
@@ -80,7 +77,8 @@ pipeline:
                         nodeSelector: {}
                         automountServiceAccountToken: true
                     outputVariables: []
-                    envVariables: {}
+                    envVariables:
+                      H_TEST: ENV_VAR
                     imagePullPolicy: IfNotPresent
                   timeout: 1m
                   failureStrategies:
