@@ -13,9 +13,20 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Wait
-                  name: sleep
-                  identifier: sleep
+                  type: ShellScript
+                  name: hello-world
+                  identifier: helloworld
                   spec:
-                    duration: 10m
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          echo "hello world"
+                          echo "$(ls -la)"
+                          echo "$(whoami)"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
         tags: {}
