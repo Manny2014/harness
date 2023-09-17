@@ -12,21 +12,36 @@ pipeline:
         spec:
           execution:
             steps:
-              - step:
-                  type: ShellScript
-                  name: hello-world
-                  identifier: helloworld
-                  spec:
-                    shell: Bash
-                    onDelegate: true
-                    source:
-                      type: Inline
+              - parallel:
+                  - step:
+                      type: ShellScript
+                      name: hello-world
+                      identifier: helloworld
                       spec:
-                        script: |-
-                          echo "hello world"
-                          echo "$(ls -la)"
-                          echo "$(whoami)"
-                    environmentVariables: []
-                    outputVariables: []
-                  timeout: 10m
+                        shell: Bash
+                        onDelegate: true
+                        source:
+                          type: Inline
+                          spec:
+                            script: |-
+                              echo "hello world"
+                              echo "$(ls -la)"
+                              echo "$(whoami)"
+                        environmentVariables: []
+                        outputVariables: []
+                      timeout: 10m
+                  - step:
+                      type: ShellScript
+                      name: create-file
+                      identifier: createfile
+                      spec:
+                        shell: Bash
+                        onDelegate: true
+                        source:
+                          type: Inline
+                          spec:
+                            script: echo "test" > test.txt
+                        environmentVariables: []
+                        outputVariables: []
+                      timeout: 10m
         tags: {}
