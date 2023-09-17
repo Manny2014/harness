@@ -3,57 +3,19 @@ pipeline:
   name: Build harness
   orgIdentifier: default
   projectIdentifier: default_project
-  properties:
-    ci:
-      codebase:
-        build: <+input>
-        connectorRef: account.Github
-        repoName: Manny2014/harness
   stages:
     - stage:
-        identifier: build
-        name: build
-        spec:
-          cloneCodebase: true
-          execution:
-            steps:
-              - step:
-                  identifier: echo
-                  name: echo
-                  spec:
-                    command: echo hello world
-                  timeout: ""
-                  type: Run
-          platform:
-            arch: Amd64
-            os: Linux
-          runtime:
-            spec: {}
-            type: Cloud
-        type: CI
-    - stage:
-        name: build-complete
-        identifier: buildcomplete
+        name: opa-checks
+        identifier: opachecks
         description: ""
         type: Custom
         spec:
           execution:
             steps:
               - step:
-                  type: ShellScript
-                  name: print-results
-                  identifier: printresults
+                  type: Wait
+                  name: sleep
+                  identifier: sleep
                   spec:
-                    shell: Bash
-                    onDelegate: true
-                    source:
-                      type: Inline
-                      spec:
-                        script: |
-                          echo "$(ls -la)"
-                          echo "$(whoami)"
-                          echo "build complete"
-                    environmentVariables: []
-                    outputVariables: []
-                  timeout: 10m
+                    duration: 10m
         tags: {}
