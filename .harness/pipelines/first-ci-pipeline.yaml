@@ -74,7 +74,7 @@ pipeline:
                           capabilities:
                             drop: []
                             add: []
-                          runAsNonRoot: true
+                          runAsNonRoot: false
                         nodeSelector: {}
                         automountServiceAccountToken: true
                     outputVariables: []
