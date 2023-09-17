@@ -89,3 +89,23 @@ pipeline:
                         action:
                           type: MarkAsFailure
         tags: {}
+  notificationRules:
+    - name: email-notify
+      identifier: emailnotify
+      pipelineEvents:
+        - type: AllEvents
+        - type: PipelineStart
+        - type: PipelineEnd
+        - type: PipelineSuccess
+        - type: PipelineFailed
+        - type: StageFailed
+        - type: StageSuccess
+        - type: StageStart
+        - type: StepFailed
+      notificationMethod:
+        type: Email
+        spec:
+          userGroups: []
+          recipients:
+            - erodg2013@gmail.com
+      enabled: true
